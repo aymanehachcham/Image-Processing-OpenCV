@@ -46,11 +46,24 @@ final_equ_img = cv.merge((blue_img, green_img, red_img))
 
 color = ('blue', 'green', 'red')
 
+# Plot of the Histogram for the Newly Equalized Image
+for i,color in enumerate(color):
+    histogram = cv.calcHist([final_equ_img], [i], None, [256], [0, 256])
+    plt.plot(histogram, color=color, label=color+'_channel')
+    plt.xlim([0,256])
+
+plt.title('Histogram for EQ Image',fontsize=20)
+plt.xlabel('Range intensity values',fontsize=14)
+plt.ylabel('Count of Pixels',fontsize=14)
+plt.legend()
+plt.show()
+
+# Plot of the CDF Analysis for the Newly Equalized Image
 for i,color in enumerate(color):
     histogram = cv.calcHist([final_equ_img], [i], None, [256], [0, 256])
     cdf = histogram.cumsum()
     cdf_percent = cdf / cdf.max()
-    plt.plot(histogram, color=color, label=color+'_channel')
+    plt.plot(histogram, color=color, label=color+'_cdf')
     plt.xlim([0,256])
 
 plt.title('CDF for EQ Image',fontsize=20)

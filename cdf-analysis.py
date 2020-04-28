@@ -27,8 +27,8 @@ for i,color in enumerate(color):
     plt.plot(cdf_percent, color=color, label=color+'_cdf')
     plt.xlim([0,256])
 
-plt.title('Histogram Analysis',fontsize=20)
+plt.title('CDF Analysis',fontsize=20)
 plt.xlabel('Range intensity values',fontsize=14)
-plt.ylabel('Count of Pixels',fontsize=14)
+plt.ylabel('Percentage of Total Pixels',fontsize=14)
 plt.legend()
 plt.show()
